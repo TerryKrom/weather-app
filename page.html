@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+    <title>Clima - Tempo</title>
+</head>
+<body onload="daytime()">
+    <div class="container">
+        <div class="main">
+                <h1 class="title"></h1>
+            <div class="inputs">
+                <input type="text" placeholder="Cidade, Local, País" id="cidade-in" class="input-city">
+                <button id="add" class="btn-3"><span>Verificar</span></button>
+                </div>
+                <div class="display">
+                    <p id="cidade-out"></p>
+                    <p id="descricao"></p>
+                    <p id="temp"></p>
+                    <p id="vento"></p>
+                </div>
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
