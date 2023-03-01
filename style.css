@@ -25,7 +25,7 @@ body, .container, .main, .header, .inputs{
     border: 3px solid #ffffff;
     border-radius: 3px;
 }
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 500px) {
     .input-city{
         width: 250px !important;
     }
