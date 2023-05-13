@@ -18,14 +18,14 @@ body, .container, .main, .header, .inputs{
     width: 400px;
     height: 550px;
     margin: 30px auto;
-    text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+    text-shadow: 2px 2px 2px rgba(0,0,0,8);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;   
     border: 3px solid #ffffff;
     border-radius: 3px;
 }
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 500px) {
     .input-city{
         width: 250px !important;
     }
@@ -41,22 +41,22 @@ body, .container, .main, .header, .inputs{
 
 
 .main{
-    width: 300px;
+    width: 330px;
     height: 500px;
     justify-content: space-between;
     flex-direction: column;
 }
-.header, .inputs{
+.header{
     flex-direction: column;
 }
 input:focus{
     outline: 0;
 }
 .input-city{
-    width: 300px;
-    height: 30px;
+    width: 285px;
+    height: 35px;
     border-radius: 10px;
-    border: 1px solid rgba(166,168,168,1);
+    border: 2px solid rgba(30,97,231,1);
     text-indent: 5px;
     margin-bottom: 30px;
     font-size: 15px;
@@ -64,39 +64,66 @@ input:focus{
 .title{
     margin-top: 30px;
 }
-.btn-3{
-    width: 150px;
-    height: 30px;
-    border-radius: 50px;
-    background-color: rgba(30,97,231,1);
-    border: none;
-    color: #fff;
-    font-size: 18px;
-    transition: 0.2s ease-in-out;
-    margin: 30px;
-}
-.btn-3:hover{
-    background-color: rgba(37,150,190,1);
-}
+
 .inputs{
     margin-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-3{
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 2px solid rgba(30,97,231,1);
+    color: rgb(7, 42, 112);
+    font-size: 18px;
+    transition: 0.2s ease-in-out;
+    margin-bottom: 30px;
+    cursor: pointer;
+    margin-left: 5px;
 }
 .display{
     margin-bottom: 0;
-    width: 400px;
+    width: 330px;
     height: 200px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
     color: #fff;
+    background-color: #ffffff7c;
+    border-radius: 20px;
+    border: 2px solid rgba(30,97,231,1);
 }
 .display p{
-    width: 400px;
+    width: 330px;
     height: 50px;
     display: flex;
     align-items: center;
     text-indent: 7px;
     font-size: 18px;
-    justify-content: center;
+    justify-content: left;
+}
+
+
+#descricao, #vento, #temp{
+    display: flex;
+    align-items: center;
+}
+#descricao svg{
+    margin-bottom: 13px;
+}
+#descricao{
+    margin-top: 13px;
+}
+
+#temp svg{
+    margin-left: 12px;
+    margin-right: 3px;
+}
+#vento svg{
+    margin-left: 15px;
+    margin-right: 6px;
 }
