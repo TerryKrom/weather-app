@@ -29,9 +29,6 @@ body, .container, .main, .header, .inputs{
     .input-city{
         width: 250px !important;
     }
-    .display{
-        margin-left: 130px !important;
-    }
 }
 @media only screen and (max-height: 660px){
     .container{
