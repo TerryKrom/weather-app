@@ -102,7 +102,7 @@ const daytime = () => {
     let element = document.querySelector('.container');
     let title = document.querySelector('.title')
     let data = new Date
-    let horas = 20
+    let horas = data.getHours()
     if(horas >= 5 && horas < 17){
         title.style.color='#e6e607'
         element.style.backgroundImage='url(./day.jpg)'
