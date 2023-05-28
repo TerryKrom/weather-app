@@ -25,6 +25,7 @@ body, .container, .main, .header, .inputs{
     border: 3px solid #ffffff;
     border-radius: 3px;
 }
+
 @media only screen and (max-width: 500px) {
     .input-city{
         width: 250px !important;
@@ -60,6 +61,7 @@ input:focus{
 }
 .title{
     margin-top: 30px;
+    color: #fff;
 }
 
 .inputs{
@@ -84,15 +86,15 @@ input:focus{
 .display{
     margin-bottom: 0;
     width: 330px;
-    height: 200px;
+    height: 250px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
     color: #fff;
-    background-color: #ffffff7c;
+    background-color: #ffffff4f;
     border-radius: 20px;
-    border: 2px solid rgba(30,97,231,1);
+    border: 2px solid #fff;
 }
 .display p{
     width: 330px;
@@ -115,12 +117,17 @@ input:focus{
 #descricao{
     margin-top: 13px;
 }
-
+#temp svg, #vento svg, #nome svg{
+    margin-left: 15px;
+}
 #temp svg{
-    margin-left: 12px;
     margin-right: 3px;
 }
 #vento svg{
-    margin-left: 15px;
     margin-right: 6px;
+}
+
+#nome svg, #temp svg, #descricao svg, #vento svg{
+    border-radius: 10px;
+    width: 45px;
 }
