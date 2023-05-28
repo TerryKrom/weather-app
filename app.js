@@ -4,6 +4,7 @@ let descricao = document.querySelector('#descricao')
 let temp = document.querySelector('#temp')
 let vento = document.querySelector('#vento')
 let display = document.getElementById('display')
+let nome = document.getElementById('nome')
 let apik = 'f17758115b7520522e0f1a7f9a7e3159'
 //acessando todos os inputs e a API key da API que será utilizada
 
@@ -67,6 +68,9 @@ const info = () => {
         let temperatura = data['main']['temp']
         let v_vento = data['wind']['speed']
         let descrip_pt = translate(descrip)
+        nome.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+        <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+        </svg> ${name}`
         temp.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-thermometer" viewBox="0 0 16 16">
         <path d="M8 14a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
         <path d="M8 0a2.5 2.5 0 0 0-2.5 2.5v7.55a3.5 3.5 0 1 0 5 0V2.5A2.5 2.5 0 0 0 8 0zM6.5 2.5a1.5 1.5 0 1 1 3 0v7.987l.167.15a2.5 2.5 0 1 1-3.333 0l.166-.15V2.5z"/>
@@ -102,25 +106,22 @@ const daytime = () => {
     let element = document.querySelector('.container');
     let title = document.querySelector('.title')
     let data = new Date
-    let horas = data.getHours()
+    let horas = 18//data.getHours()
     if(horas >= 5 && horas < 17){
-        title.style.color='#e6e607'
-        element.style.backgroundImage='url(./day.jpg)'
+        element.style.backgroundImage='url(./spectrum-gradient.svg)'
     }else if(horas >= 17 && horas < 20){
         inputval.style.borderColor="#7e0e3b"
         btn.style.borderColor="#7e0e3b"
         btn.style.color="#7e0e3b"
         display.style.borderColor="#7e0e3b"
-        title.style.color='#fff'
-        element.style.backgroundImage='url(./evening.jpg)'
+        element.style.backgroundImage='url(./afternoon.svg)'
     }
     else{
         inputval.style.borderColor="#8b1f99"
         btn.style.borderColor="#8b1f99"
         btn.style.color="#8b1f99"
         display.style.borderColor="#8b1f99"
-        title.style.color='#fff'
-        element.style.backgroundImage='url(./night.png)'
+        element.style.backgroundImage='url(./night.svg)'
     }
 }
 /*
