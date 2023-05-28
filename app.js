@@ -106,7 +106,7 @@ const daytime = () => {
     let element = document.querySelector('.container');
     let title = document.querySelector('.title')
     let data = new Date
-    let horas = 18//data.getHours()
+    let horas = data.getHours()
     if(horas >= 5 && horas < 17){
         element.style.backgroundImage='url(./spectrum-gradient.svg)'
     }else if(horas >= 17 && horas < 20){
