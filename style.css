@@ -4,17 +4,19 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Outfit", sans-serif;
+    transition: 0.1s linear;
 }
 
 :root {
     --primary-color: #14213d;
     --secondary-color: #536390;
-    --font-color: #5472d4;
-    --bg-color: #6a93cb;
+    --font-color: #14213d;
+    --bg-color: #b0c3df;
     --header-bg: #8389df;
     --style-weight: 300;
-    --bg-image: radial-gradient(circle, #82a2ce 0%, #a4bfef 74%);
+    --bg-image: radial-gradient(circle, #9dc1f3 0%, #a4bfef 74%);
 }
+
 
 [data-theme="dark"] {
     --primary-color: #072a70;
@@ -32,6 +34,49 @@ body {
     color: var(--font-color);
     background-image: var(--bg-image);
 }
+
+
+/* <======= MOBILE CONFIG ========>*/
+
+.mobile-menu{
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media only screen and (min-width: 768px){
+    header{
+        width: 750px !important;
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .input-city{
+        width: 30vw;
+    }
+}
+@media only screen and (max-width: 768px) {
+    
+}
+
+@media only screen and (max-width: 600px) {
+    header{
+        display: none !important;
+    }
+    .mobile-menu{
+        display: flex;
+        margin: 10px;
+    }
+    .input-city{
+        width: 40vw;
+    }
+    .inputs{
+        margin: 10px auto;
+    }
+}
+
+/*<======== MOBILE CONFIG ========>*/
 
 .inputs, .logo{
     display: flex;
@@ -55,7 +100,9 @@ header div{
 }
 .logo h2{
     font-weight: 200;
+    font-size: 1.5rem;
     color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
 
 
@@ -79,12 +126,13 @@ input:focus{
     outline: 0;
 }
 .input-city{
-    width: 305px;
+    width: 22vw;
     height: 40px;
     border-radius: 10px;
     border: none;
     text-indent: 5px;
     font-size: 15px;
+    min-width: 240px;
 }
 .title{
     color: #fff;
@@ -97,7 +145,7 @@ input:focus{
     align-items: center;
 }
 .btn-3{
-    width: 75px;
+    width: 50px;
     height: 40px;
     border-radius: 10px;
     background-color: #fff;
@@ -107,6 +155,10 @@ input:focus{
     transition: 0.2s ease-in-out;
     cursor: pointer;
     margin-left: 5px;
+}
+.btn-3:hover{
+    background-color: var(--font-color);
+    color: var(--bg-color);
 }
 
 .display{
@@ -126,11 +178,12 @@ input:focus{
     align-items: center;
     justify-content: space-between;
     font-size: 18px;
+    margin: 2px;
 }
 
 #temp{
     margin-top: 30px;
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 100;
 }
 #nome{
@@ -221,6 +274,21 @@ input:focus{
     border-radius: 50%;
   }
 .copy{
-    font-weight: 100;
+    font-weight: var(--style-weight);
     text-align: center;
+}
+
+@keyframes appearing{
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.appear{
+    animation: appearing 0.5s linear;
 }
