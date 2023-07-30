@@ -6,6 +6,7 @@ let vento = document.querySelector('#vento')
 let display = document.getElementById('display')
 let nome = document.getElementById('nome')
 let apik = 'f17758115b7520522e0f1a7f9a7e3159'
+let container = document.querySelector('.container')
 //acessando todos os inputs e a API key da API que será utilizada
 
 
@@ -23,7 +24,7 @@ para essa função, que identifica qual clima esta sendo informado
 e troca para PT-BR
 
 -- eu poderia fazer um sistema mais funcional, mas como nesse projeto
-são poucas palavras a serem traduzidas, não ho0uve problema em ser feito
+são poucas palavras a serem traduzidas, não houve problema em ser feito
 dessa forma.
 */
 
@@ -53,16 +54,60 @@ const translate = (txt) => {
     salva.
 
 */
-const info = () => {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputval.value+'&appid='+apik)
-    .then(res => res.json())
 
+
+const getUnsplashImage = async (query) => {
+    const unplashKey = 'imQIiK3j2_cg3D6eKT1qAhUUT0wVQYGghp3mV1swBDM';
+    const apiUrl = `https://api.unsplash.com/photos/random?query=${query}&client_id=${unplashKey}`;
+    try {
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error('Failed to fetch image from Unsplash API');
+      }
+  
+      const data = await response.json();
+      if (!data.urls || !data.urls.regular) {
+        throw new Error('Image not found');
+      }
+  
+      return data.urls.regular;
+    } catch (error) {
+      console.error('Error fetching image:', error.message);
+      return null;
+    }
+};
+    
+
+const info = () => {
+    let query = inputval.value.trim().toLowerCase();
+
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='+query+'&appid='+apik)
+    .then(res => res.json())
+    
 /*
     Logo após capturar os dados necessários, jogamos os dados dentro
     dos inputs que acessamos.
-    Caso tenha algum erro, a função catch executa´ra um alert()    
+    Caso tenha algum erro, a função catch executara um alert()    
 */
     .then(data => {
+        // let query = inputval.value
+        // let img = '';
+        // getUnsplashImage(query)
+        // .then((url) => {
+        //     if(url){
+        //         img = url;
+        //         console.log(img)    
+        //     }else{
+        //         console.log('Nenhuma imagem encontrada')
+        //     }
+        // }).catch((err) => {
+        //     console.error('Erro: ', err.message)
+        // })
+        let animatedTexts = document.querySelectorAll('.animated')
+        animatedTexts.forEach(e => {
+            e.classList.toggle('appear')
+        })
+
         let name = data['name']
         let descrip = data['weather']['0']['description']
         let temperatura = data['main']['temp']
@@ -84,78 +129,25 @@ const info = () => {
 //Aqui adicionamos a função para que tambem o app tambem funcione
 //Clicando com o ENTER
 
-btn.addEventListener('click', info)
+btn.addEventListener('click', info);
+
 document.body.addEventListener('keypress', function(e){
     if(e.code === "Enter"){
         info()
     }
 })
 
-//A função daytime adiciona o relógio ao carrregar a página, e
-//Altera o Plano de fundo de acordo com o Horário
-// const daytime = () => {
-//     clock()
-//     let element = document.querySelector('.container');
-//     let title = document.querySelector('.title')
-//     let data = new Date
-//     let horas = data.getHours()
-//     if(horas >= 5 && horas < 17){
-//         element.style.backgroundImage='url(./spectrum-gradient.svg)'
-//     }else if(horas >= 17 && horas < 20){
-//         inputval.style.borderColor="#7e0e3b"
-//         btn.style.borderColor="#7e0e3b"
-//         btn.style.color="#7e0e3b"
-//         display.style.borderColor="#7e0e3b"
-//         element.style.backgroundImage='url(./afternoon.svg)'
-//     }
-//     else{
-//         inputval.style.borderColor="#8b1f99"
-//         btn.style.borderColor="#8b1f99"
-//         btn.style.color="#8b1f99"
-//         display.style.borderColor="#8b1f99"
-//         element.style.backgroundImage='url(./night.svg)'
-//     }
-// }
-/*
-    Aqui criamos nosso relógio, coletando o horário com o constructor
-    Date.
-    E adicionando 0 em números menores do que 10 para manter o padrão
-    de 6 digitos.
-    Logo após a criação da função, executamos a cada 1s com o setInterval()
-*/
-// const clock = () => {
-//     let title = document.querySelector('.title')
-//     let data = new Date
-//     let h = data.getHours()
-//     let m = data.getMinutes()
-//     let s = data.getSeconds()
-//     title.innerHTML=`${h}:${m}:${s}`
-//     if(h < 10){
-//         title.innerHTML=`0${h}:${m}:${s}`
-//     }
-//     if(m < 10){
-//         title.innerHTML=`${h}:0${m}:${s}`    
-//     }
-//     if(s < 10){
-//         title.innerHTML=`${h}:${m}:0${s}`
-//     }
-// }
-
-// setInterval(clock, 1000);
-
-
-
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 
 function switchTheme(e) {
     if (e.target.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark'); //add this
+        localStorage.setItem('theme', 'dark');
 
     }
     else {
         document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light'); //add this
+        localStorage.setItem('theme', 'light');
 
     }    
 }
