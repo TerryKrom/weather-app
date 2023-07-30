@@ -1,111 +1,142 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Outfit", sans-serif;
 }
-body{
-    background-color: #101010;
+
+:root {
+    --primary-color: #14213d;
+    --secondary-color: #536390;
+    --font-color: #5472d4;
+    --bg-color: #6a93cb;
+    --header-bg: #8389df;
+    --style-weight: 300;
+    --bg-image: radial-gradient(circle, #82a2ce 0%, #a4bfef 74%);
 }
-body, .container, .main, .header, .inputs{
+
+[data-theme="dark"] {
+    --primary-color: #072a70;
+    --secondary-color: #818cab;
+    --bg-image: none;
+    --font-color: #fff;
+    --bg-color: #161625;
+    --heading-color: #818cab;
+    --header-bg: #14213d;
+    --style-weight: 100;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    background-image: var(--bg-image);
+}
+
+.inputs, .logo{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+header{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header div{
+    height: 100%;
+}
+
+.logo img{
+    width: 60px;
+}
+.logo h2{
+    font-weight: 200;
+    color: #fff;
+}
+
+
 .container{
     width: 400px;
     height: 550px;
     margin: 30px auto;
-    text-shadow: 2px 2px 2px rgba(0,0,0,8);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;   
-    border: 3px solid #ffffff;
-    border-radius: 3px;
-}
-
-@media only screen and (max-width: 500px) {
-    .input-city{
-        width: 250px !important;
-    }
-}
-@media only screen and (max-height: 660px){
-    .container{
-        height: 95vmax !important;
-    }
-}
-
-
-.main{
-    width: 330px;
-    height: 500px;
+    border: 2px solid #fff;
+    color: var(--font-color);
+    border-radius: 10px;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-direction: column;
 }
-.header{
-    flex-direction: column;
-}
+
 input:focus{
     outline: 0;
 }
 .input-city{
-    width: 285px;
-    height: 35px;
+    width: 305px;
+    height: 40px;
     border-radius: 10px;
-    border: 2px solid rgba(30,97,231,1);
+    border: none;
     text-indent: 5px;
-    margin-bottom: 30px;
     font-size: 15px;
 }
 .title{
-    margin-top: 30px;
     color: #fff;
+    display: none;
 }
 
 .inputs{
-    margin-bottom: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .btn-3{
-    width: 40px;
-    height: 35px;
-    border-radius: 8px;
+    width: 75px;
+    height: 40px;
+    border-radius: 10px;
     background-color: #fff;
-    border: 2px solid rgba(30,97,231,1);
-    color: rgb(7, 42, 112);
+    border: none;
+    color: var(--primary-color);
     font-size: 18px;
     transition: 0.2s ease-in-out;
-    margin-bottom: 30px;
     cursor: pointer;
     margin-left: 5px;
 }
+
 .display{
-    margin-bottom: 0;
-    width: 330px;
-    height: 250px;
+    width: 100%;
+    height: 150px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: #fff;
-    background-color: #ffffff4f;
-    border-radius: 20px;
-    border: 2px solid #fff;
-}
-.display p{
-    width: 330px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    text-indent: 7px;
-    font-size: 18px;
-    justify-content: left;
+    font-weight: var(--style-weight);
+    margin: 10px;
 }
 
+.display p{
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+#temp{
+    margin-top: 30px;
+    font-size: 3.5rem;
+    font-weight: 100;
+}
+#nome{
+    font-size: 1.2rem;
+    font-weight: var(--style-weight);
+}
 
 #descricao, #vento, #temp{
     display: flex;
@@ -120,14 +151,76 @@ input:focus{
 #temp svg, #vento svg, #nome svg{
     margin-left: 15px;
 }
-#temp svg{
-    margin-right: 3px;
+#nome svg, #temp svg, #descricao svg, #vento svg{
+    width: 45px;
 }
 #vento svg{
-    margin-right: 6px;
+    margin-top: 5px;
 }
 
-#nome svg, #temp svg, #descricao svg, #vento svg{
-    border-radius: 10px;
-    width: 45px;
+#vento{
+    border-top: 1px solid #fff;
+}
+
+/*Simple css to style it like a toggle switch*/
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+.theme-switch-wrapper p{
+    margin: 5px;
+    color: #fff;
+}
+  .theme-switch {
+    display: inline-block;
+    height: 30px;
+    position: relative;
+    width: 56px;
+  }
+  
+  .theme-switch input {
+    display:none;
+  }
+  
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 22px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 22px;
+  }
+  
+  input:checked + .slider {
+    background-color: rgba(30,97,231,1);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+.copy{
+    font-weight: 100;
+    text-align: center;
 }
