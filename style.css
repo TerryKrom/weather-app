@@ -292,3 +292,22 @@ input:focus{
 .appear{
     animation: appearing 0.5s linear;
 }
+
+
+.shake{
+    animation: shake 0.2s linear;
+}
+@keyframes shake{
+     0%{
+        transform: translateX(15px);
+     }
+     25%{
+        transform: translateX(-15px);    
+     }
+    50%{
+        transform: translateX(15px); 
+     }
+    100%{
+        transform: translateX(-15px);    
+     }
+}
