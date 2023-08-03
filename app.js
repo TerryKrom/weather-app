@@ -5,6 +5,10 @@ let temp = document.querySelector('#temp')
 let vento = document.querySelector('#vento')
 let display = document.getElementById('display')
 let nome = document.getElementById('nome')
+
+let input_mobile = document.getElementById('mobile-in')
+let btn_mobile = document.getElementById('add-mobile')
+
 const apik = 'f17758115b7520522e0f1a7f9a7e3159'
 let container = document.querySelector('.container')
 //acessando todos os inputs e a API key da API que será utilizada
@@ -50,7 +54,7 @@ const translate = (txt) => {
 }    
 
 const getInfo = () => {
-    let query = inputval.value.trim().toLowerCase();
+    let query = inputval.value.trim().toLowerCase() || input_mobile.value.trim().toLowerCase();
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apik}`)
 
@@ -78,16 +82,19 @@ const getInfo = () => {
                 })
         }else{
             inputval.classList.add('shake')
+            input_mobile.classList.add('shake')
         }
     })
     .catch(err => console.error(err))
     inputval.classList.remove('shake')
+    input_mobile.classList.remove('shake')
 }
 
 //Aqui adicionamos a função para que tambem o app tambem funcione
 //Clicando com o ENTER
 
 btn.addEventListener('click', getInfo);
+btn_mobile.addEventListener('click', getInfo)
 
 document.body.addEventListener('keypress', function(e){
     if(e.code === "Enter"){
