@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -35,7 +36,6 @@ body {
     background-image: var(--bg-image);
 }
 
-
 /* <======= MOBILE CONFIG ========>*/
 
 .mobile-menu{
@@ -56,9 +56,6 @@ body {
         width: 30vw;
     }
 }
-@media only screen and (max-width: 768px) {
-    
-}
 
 @media only screen and (max-width: 600px) {
     header{
@@ -78,6 +75,7 @@ body {
         height: 450px !important;
     }
 }
+
 /*<======== MOBILE CONFIG ========>*/
 
 .inputs, .logo{
@@ -100,6 +98,7 @@ header div{
 .logo img{
     width: 60px;
 }
+
 .logo h2{
     font-weight: 200;
     font-size: 1.5rem;
@@ -107,14 +106,10 @@ header div{
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
 
-
 .container{
     width: 400px;
     height: 550px;
     margin: 30px auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;   
     border: 2px solid #fff;
     color: var(--font-color);
     border-radius: 10px;
@@ -127,6 +122,7 @@ header div{
 input:focus{
     outline: 0;
 }
+
 .input-city{
     width: 22vw;
     height: 40px;
@@ -146,6 +142,7 @@ input:focus{
     justify-content: center;
     align-items: center;
 }
+
 .btn-3{
     width: 50px;
     height: 40px;
@@ -157,10 +154,6 @@ input:focus{
     transition: 0.2s ease-in-out;
     cursor: pointer;
     margin-left: 5px;
-}
-.btn-3:hover{
-    background-color: var(--font-color);
-    color: var(--bg-color);
 }
 
 .display{
@@ -188,6 +181,7 @@ input:focus{
     font-size: 4rem;
     font-weight: 100;
 }
+
 #nome{
     font-size: 1.2rem;
     font-weight: var(--style-weight);
@@ -197,18 +191,19 @@ input:focus{
     display: flex;
     align-items: center;
 }
+
 #descricao svg{
     margin-bottom: 13px;
 }
+
 #descricao{
     margin-top: 13px;
 }
-#temp svg, #vento svg, #nome svg{
-    margin-left: 15px;
-}
-#nome svg, #temp svg, #descricao svg, #vento svg{
+
+svg {
     width: 45px;
 }
+
 #vento svg{
     margin-top: 5px;
 }
