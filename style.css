@@ -74,8 +74,10 @@ body {
     .inputs{
         margin: 10px auto;
     }
+    .container{
+        height: 450px !important;
+    }
 }
-
 /*<======== MOBILE CONFIG ========>*/
 
 .inputs, .logo{
