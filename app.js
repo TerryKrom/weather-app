@@ -102,7 +102,16 @@ document.body.addEventListener('keypress', function(e){
     }
 })
 
+if(window.screen.width <= 400){
+    document.body.addEventListener('keypress', function(e){
+        if(e.code === "Enter"){
+            getInfo()
+        }
+    })
+}
+
 const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+const toggleMobile = document.querySelector('#check-mobile')
 
 function switchTheme(e) {
     if (e.target.checked) {
@@ -118,6 +127,7 @@ function switchTheme(e) {
 }
 
 toggleSwitch.addEventListener('change', switchTheme, false);
+toggleMobile.addEventListener('change', switchTheme, false);
 
 const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
@@ -126,6 +136,7 @@ if (currentTheme) {
 
     if (currentTheme === 'dark') {
         toggleSwitch.checked = true;
+        toggleMobile.checked = true;
     }
 }
 
