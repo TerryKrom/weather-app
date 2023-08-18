@@ -198,6 +198,7 @@ input:focus{
 
 #descricao{
     margin-top: 13px;
+    text-transform: capitalize;
 }
 
 svg {
