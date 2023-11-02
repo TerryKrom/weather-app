@@ -34,6 +34,7 @@ body {
     background-color: var(--bg-color);
     color: var(--font-color);
     background-image: var(--bg-image);
+    overflow: hidden;
 }
 
 /* <======= MOBILE CONFIG ========>*/
@@ -48,16 +49,14 @@ body {
     header{
         width: 750px !important;
         margin: auto;
+        border: 1px solid #fff;
     }
-}
-
-@media only screen and (max-width: 600px) {
     .input-city{
-        width: 30vw;
+        width: 350px !important;
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 630px) {
     header{
         display: none !important;
     }
@@ -66,13 +65,15 @@ body {
         margin: 10px;
     }
     .input-city{
-        width: 40vw;
+        width: 80% !important;
     }
     .inputs{
         margin: 10px auto;
+        width: 100%;
     }
     .container{
-        height: 450px !important;
+        height: 500px !important;
+        width: 99% !important;
     }
 }
 
@@ -91,6 +92,7 @@ header{
     align-items: center;
     justify-content: space-between;
 }
+
 header div{
     height: 100%;
 }
@@ -217,7 +219,6 @@ svg {
 .theme-switch-wrapper {
     display: flex;
     align-items: center;
-    margin: 5px;
 }
 .theme-switch-wrapper p{
     margin: 5px;
@@ -271,6 +272,7 @@ svg {
   .slider.round:before {
     border-radius: 50%;
   }
+
 .copy{
     font-weight: var(--style-weight);
     text-align: center;
