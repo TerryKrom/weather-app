@@ -74,15 +74,21 @@ const getInfo = async () => {
                 e.classList.toggle('appear');
             });
         } else {
+            if (inputval.classList.contains('shake')){
+                inputval.classList.remove('shake')
+                void inputval.offsetWidth;
+            }
+            if (input_mobile.classList.contains('shake')){
+                input_mobile.classList.remove('shake')
+                void input_mobile.offsetWidth;
+            }
+            
             inputval.classList.add('shake');
             input_mobile.classList.add('shake');
         }
     } catch (err) {
         console.error(err);
     }
-
-    inputval.classList.remove('shake');
-    input_mobile.classList.remove('shake');
 };
 
 //Aqui adicionamos a função para que tambem o app tambem funcione
