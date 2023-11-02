@@ -27,7 +27,7 @@
     --bg-color: #161625;
     --heading-color: #818cab;
     --header-bg: #14213d;
-    --style-weight: 100;
+    --style-weight: 200;
 }
 
 body {
@@ -130,7 +130,8 @@ input:focus{
     border-radius: 10px;
     border: none;
     text-indent: 5px;
-    font-size: 15px;
+    font-size: 1rem;
+    box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
 }
 
 .title{
@@ -155,6 +156,7 @@ input:focus{
     transition: 0.2s ease-in-out;
     cursor: pointer;
     margin-left: 5px;
+    box-shadow: 1px 1px 1px 0px rgba(0,0,0,0.1);
 }
 
 .display{
