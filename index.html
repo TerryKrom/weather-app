@@ -47,15 +47,18 @@
         <!--Modals-->
         <div id="modal" class="modal">
             <div class="modal-content">
+                <div class="modal-header">
+                    <span class="fa fa-add"></span>
+                    <h2>Adding a place</h2>
+                </div>
                 <div class="content">
                     <h2>Search for a Location</h2>
-                    <div class="inputs">
-                        <input type="text" id="city-input" placeholder="Search for city, state, country"
-                            autocomplete="off">
+                    <input type="text" id="city-input" placeholder="Search for city, state, country" autocomplete="off">
+                    <div class="container-button">
                         <button id="search-btn">
+                            Search
                             <span class="fa fa-search"></span>
                         </button>
-
                     </div>
                     <button onclick="closeModal()" id="close-modal" class="close-modal">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
