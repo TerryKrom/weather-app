@@ -11,11 +11,13 @@
 :root {
     --primary-color: #14213d;
     --dark-primary-color: #0c1629;
+    --darker-primary-color: #070e18;
     --secondary-color: #536390;
     --dark-secondary-color: #333d58;
     --font-color: #eee;
     --bg-color: #222238;
     --dark-bg-color: #10101b;
+    --darker-bg-color: #09090f;
 }
 
 /* 
