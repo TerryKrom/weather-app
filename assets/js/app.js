@@ -1,8 +1,7 @@
-let descricao = document.getElementById('descricao');
+let descLabel = document.getElementById('descricao');
 let tempLabel = document.getElementById('temp');
 let windLabel = document.getElementById('vento');
 let cityLabel = document.getElementById('nome');
-let display = document.getElementById('display');
 let container = document.querySelector('.container');
 const apiKey = 'f17758115b7520522e0f1a7f9a7e3159';
 
@@ -40,13 +39,42 @@ const translate = async (txt) => {
     }
 };
 
-//Get weather information
+let animatedTexts = document.querySelectorAll('.animated');
 
 const clear = () => {
-    cityLabel.innerHTML='';
-    tempLabel.innerHTML='';
-    descricao.innerHTML='';
-    windLabel.innerHTML='';
+    cityLabel.innerHTML = '';
+    tempLabel.innerHTML = '';
+    descLabel.innerHTML = '';
+    windLabel.innerHTML = '';
+    animatedTexts.forEach(e => {
+        if (e.classList.contains('appear')) {
+            e.classList.remove("appear");
+        }
+    })
+}
+
+const icons = {
+    'nuvens': 'cloud',
+    'limpo': 'sun',
+    'neve': 'snowflake',
+}
+
+const findIcon = (text) => {
+    let findedIcon;
+    let texto = String(text).trim().toLowerCase();
+
+    for (const key in icons) {
+        if (texto.includes(key)) {
+            findedIcon = icons[key];
+            break
+        }
+    }
+    if (findedIcon !== undefined) {
+        return findedIcon;
+    }
+    else{
+        return 'cloud';
+    }
 }
 
 const getInfo = async (city) => {
@@ -56,40 +84,40 @@ const getInfo = async (city) => {
     // Exibe o loader
     loader.style.display = 'block';
 
-    let query = city ? city.trim().toLowerCase() : inputval.value.trim().toLowerCase();
+    let query = city.trim().toLowerCase();
 
-    try {       
+    try {
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}`);
+
         const data = await response.json();
-        
-        console.log(data)
+
         if (data && data.name && data.weather && data.weather.length > 0 && data.main && data.wind) {
             let name = data['name'];
             let desc = data['weather']['0']['description'];
             let temperature = data['main']['temp'];
             let windSpeed = data['wind']['speed'];
             loader.style.display = 'none';
-            
+
             // Traduzindo o texto
-            let desc_pt = await translate(desc);
+            let descPT = await translate(desc);
+            let namePT = await translate(name);
 
-            cityLabel.innerHTML = `${name}`;
+            cityLabel.innerHTML = `${namePT}`;
             tempLabel.innerHTML = `${convertion(temperature)}°`;
-            descricao.innerHTML = `${desc_pt} <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-cloud-sun" viewBox="0 0 16 16"> ...`;
+            descLabel.innerHTML = `${descPT}
+                <span class="fa fa-${findIcon(descPT)}"></span>
+            `;
 
-            windLabel.innerHTML = `${windSpeed} KM/H <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16"> ...`;
+            windLabel.innerHTML = `${windSpeed} KM/H
+                <span class="fa fa-wind"></span>
+            `;
 
-            let animatedTexts = document.querySelectorAll('.animated');
             animatedTexts.forEach(e => {
-                e.classList.toggle('appear');
+                e.classList.add('appear');
             });
+
         } else {
             loader.style.display = 'none';
-            if (inputval.classList.contains('shake')){
-                inputval.classList.remove('shake')
-                void inputval.offsetWidth;
-            }
-            inputval.classList.add('shake');
         }
     } catch (err) {
         console.error(err);

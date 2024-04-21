@@ -185,7 +185,6 @@ input:focus {
     align-items: center;
     flex-direction: column;
     font-weight: var(--style-weight);
-    margin: 10px;
 }
 
 .display p {
@@ -194,11 +193,18 @@ input:focus {
     align-items: center;
     justify-content: space-between;
     font-size: 18px;
-    margin: 2px;
+    margin: 5px 0px 5px 0px;
+}
+
+.line{
+    height: 1px;
+    background-color: #eee;
+    width: 85%;
+    margin: 5px 0px 5px 0px;
 }
 
 #temp {
-    margin-top: 30px;
+    margin-top: 2rem;
     font-size: 4rem;
     font-weight: 100;
 }
@@ -230,10 +236,6 @@ svg {
 
 #vento svg {
     margin-top: 5px;
-}
-
-#vento {
-    border-top: 1px solid #fff;
 }
 
 .theme-switch-wrapper {
