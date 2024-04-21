@@ -118,13 +118,14 @@ const getInfo = async (city) => {
 
         } else {
             loader.style.display = 'none';
+            getInfoByIP(); // Chama getInfoByIP em caso de erro na requisição
         }
     } catch (err) {
-        console.error(err);
+        console.error('Erro ao obter informações meteorológicas:', err);
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+const getInfoByIP = () => {
     fetch('https://ipapi.co/json/')
         .then(response => response.json())
         .then(data => {
@@ -134,4 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => {
             console.error('Erro ao obter localização do IP:', error);
         });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    getInfoByIP();
 });
