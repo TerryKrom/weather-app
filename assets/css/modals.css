@@ -1,0 +1,140 @@
+.modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 95%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content{
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+}
+
+.modal-content .content{
+    margin: 20px;
+    width: 90%;
+}
+
+.modal-content .content h2{
+    font-weight: 300;
+}
+
+.modal-content .content input, #search-btn{
+    height: 2.6rem;
+    border-radius: 0.3rem;
+    background-color: var(--dark-bg-color);
+    color: #eee;
+    margin: 0px 5px 0px 0px;
+}
+
+.modal-content input{
+    border: none;
+    padding: 0 8px;
+    outline: 0;
+    flex: 3;
+}
+
+#search-btn{
+    width: 6rem;
+    border: none;
+    cursor: pointer;
+    flex: 1;
+}
+
+#search-btn:hover{
+    opacity: 0.7;
+}
+
+.inputs{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+
+@media only screen and (max-width:540px){
+    .modal-content{
+        width: 80%;
+        transform: translate(-45%, -50%);
+    }
+    .modal{
+        background-color: transparent !important;
+    }
+}
+
+.close-modal{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: none;
+    color: #eee;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.close-modal svg{
+    width: 26px;
+    height: 26px;
+}
+
+@keyframes appear{
+    0%{
+        opacity: 0;
+        margin-top: -150px;
+    }
+    25%{
+        opacity: 0.25;
+        margin-top: -100px;
+    }
+    50%{
+        opacity: 0.50;
+        margin-top: -50px;
+    }
+    75%{
+        opacity: 0.75;
+        margin-top: -25px;
+    }
+    100%{
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+@keyframes disapear{
+    0%{
+        opacity: 1;
+        margin-top: 0px;
+    }
+    25%{
+        opacity: 0.75;
+        margin-top: -25px;
+    }
+    50%{
+        opacity: 0.50;
+        margin-top: -50px;
+    }
+    75%{
+        opacity: 0.25;
+        margin-top: -75px;
+    }
+    100%{
+        opacity: 1;        
+        margin-top: -100px;
+    }
+}

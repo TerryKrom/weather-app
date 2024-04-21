@@ -1,21 +1,18 @@
-// let inputval = document.querySelector('#cidade-in')
-// let btn = document.querySelector('#add')
+let descricao = document.getElementById('descricao');
+let tempLabel = document.getElementById('temp');
+let windLabel = document.getElementById('vento');
+let cityLabel = document.getElementById('nome');
+let display = document.getElementById('display');
+let container = document.querySelector('.container');
+const apiKey = 'f17758115b7520522e0f1a7f9a7e3159';
 
-let descricao = document.querySelector('#descricao')
-let temp = document.querySelector('#temp')
-let vento = document.querySelector('#vento')
-let display = document.getElementById('display')
-let nome = document.getElementById('nome')
-const apiKey = 'f17758115b7520522e0f1a7f9a7e3159'
-let container = document.querySelector('.container')
 
 //converting the API
-const converte = (temp) => {
+const convertion = (temp) => {
     return (temp - 272).toFixed(0)
 }
 
 //translating all text to pt-br
-
 const translate = async (txt) => {
     const url = 'https://text-translator2.p.rapidapi.com/translate';
     const options = {
@@ -45,32 +42,49 @@ const translate = async (txt) => {
 
 //Get weather information
 
+const clear = () => {
+    cityLabel.innerHTML='';
+    tempLabel.innerHTML='';
+    descricao.innerHTML='';
+    windLabel.innerHTML='';
+}
+
 const getInfo = async (city) => {
+    clear()
+    // Seleciona o loader
+    const loader = document.getElementById('loader');
+    // Exibe o loader
+    loader.style.display = 'block';
+
     let query = city ? city.trim().toLowerCase() : inputval.value.trim().toLowerCase();
-    try {
+
+    try {       
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}`);
         const data = await response.json();
+        
         console.log(data)
         if (data && data.name && data.weather && data.weather.length > 0 && data.main && data.wind) {
             let name = data['name'];
-            let descrip = data['weather']['0']['description'];
-            let temperatura = data['main']['temp'];
-            let v_vento = data['wind']['speed'];
-
+            let desc = data['weather']['0']['description'];
+            let temperature = data['main']['temp'];
+            let windSpeed = data['wind']['speed'];
+            loader.style.display = 'none';
+            
             // Traduzindo o texto
-            let descrip_pt = await translate(descrip);
+            let desc_pt = await translate(desc);
 
-            nome.innerHTML = `${name}`;
-            temp.innerHTML = `${converte(temperatura)}°`;
-            descricao.innerHTML = `${descrip_pt} <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-cloud-sun" viewBox="0 0 16 16"> ...`;
+            cityLabel.innerHTML = `${name}`;
+            tempLabel.innerHTML = `${convertion(temperature)}°`;
+            descricao.innerHTML = `${desc_pt} <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-cloud-sun" viewBox="0 0 16 16"> ...`;
 
-            vento.innerHTML = `${v_vento} KM/H <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16"> ...`;
+            windLabel.innerHTML = `${windSpeed} KM/H <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-wind" viewBox="0 0 16 16"> ...`;
 
             let animatedTexts = document.querySelectorAll('.animated');
             animatedTexts.forEach(e => {
                 e.classList.toggle('appear');
             });
         } else {
+            loader.style.display = 'none';
             if (inputval.classList.contains('shake')){
                 inputval.classList.remove('shake')
                 void inputval.offsetWidth;
@@ -81,7 +95,6 @@ const getInfo = async (city) => {
         console.error(err);
     }
 };
-
 
 document.addEventListener('DOMContentLoaded', () => {
     fetch('https://ipapi.co/json/')
@@ -94,16 +107,3 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Erro ao obter localização do IP:', error);
         });
 });
-
-
-
-//Aqui adicionamos a função para que tambem o app tambem funcione
-//Clicando com o ENTER
-
-// btn.addEventListener('click', getInfo);
-
-// document.body.addEventListener('keypress', function(e){
-//     if(e.code === "Enter"){
-//         getInfo()
-//     }
-// })
